@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+
+  <meta charset="utf-8" />
+  <title>WS Chat</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+  <script>
+
+  var wsUri = "ws://localhost:4000/ws-chat";
+  var websocket;
+
+  function sendMsg()
+  {
+      var msg = $('#msgbox').val();
+      websocket.send(msg);
+      appendMsg("ME: " + msg);
+      $('#msgbox').val('');
+  }
+
+  function appendMsg(msg)
+  {
+      $('#window-content').append('<p>' + msg + '</p>');
+  }
+
+  $(function(){
+
+      websocket = new WebSocket(wsUri);
+
+      websocket.onopen = function(evt) { 
+          appendMsg("Established a connection to the server");
+      };
+
+      websocket.onclose = function(evt) { 
+          appendMsg("Connection closed");
+      };
+
+      websocket.onmessage = function(evt) { 
+          appendMsg(evt.data);
+      };
+
+      websocket.onerror = function(evt) { 
+          appendMsg('Error: ' + evt.data);
+      };
+
+      $('#msgbox').on('keypress', function(e){
+          if(e.which === 13){
+              sendMsg();
+          }
+      });
+
+      $('#send').click(function(e){
+          e.preventDefault();
+          sendMsg();
+      });
+      
+  });
+  
+</script>
+
+<style>
+
+*{
+  box-sizing: border-box;
+  font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 200;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  margin-left: -10px;
+  width: 100%;
+  height: 50px;
+  background: #008000;
+}
+
+#header h3 {
+  padding: 0px 20px 5px; 
+  color: white; 
+  text-shadow: 0px 2px 1px black;
+}
+
+#container {
+  width: 600px;
+  height: 400px;
+  margin: 70px auto 0;
+}
+
+#window{
+  width: 600px;
+  height: 370px;
+  box-shadow: inset 0 2px 5px grey;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  font-size: 0.7em;
+}
+
+#window-content{
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+}
+
+p{
+  margin:2px;
+}
+
+table{
+  width: 600px; 
+  border:none;
+}
+
+#msgbox{
+  width: 540px;
+  height: 30px;
+  margin-left: -3px;
+  font-size: 1em;
+  border: none;
+  box-shadow: inset 0 0 2px grey;
+  outline: none;
+  border-radius: 2px;
+}
+
+#send{
+  width: 50px;
+  height: 30px;
+  background: #e6e6e6;
+}
+</style>
+</head>
+
+<body>
+  <div id="header">
+      <h3>WebSocket Simple Chat</h3>
+  </div>  
+  <div id="container">
+    <div id="window">
+      <div id="window-content"></div>
+    </div>
+    <table style="width: 600px; border:none"><tr>
+      <td><input type=text id="msgbox"></td>
+      <td><input type=submit id="send" value="SEND"></td>
+   </tr></table>
+  </div>
+
+</body>
+
+</html>
+
+
+
+

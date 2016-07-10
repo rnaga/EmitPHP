@@ -1,0 +1,20 @@
+{
+  "name": "EmitPHP",
+  "description": "Framework that you can create WebSocket, HTTP and FCGI Application in PHP",
+  "license": "MIT",
+  "keywords": ["websocket","http", "fcgi", "eventemitter"],
+  "authors": [{
+      "name": "Ryohei Nagatsuka",
+      "email": "ryoheinaga@gmail.com",
+      "role": "Developer"
+   }],
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "autoload": {
+    "files": ["src/Loop.php"],
+    "psr-4": {
+           "Emit\\": "src/"
+    }
+  }
+}
