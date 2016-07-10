@@ -97,7 +97,7 @@ See [examples](https://github.com/rnaga/EmitPHP/tree/master/examples) for more d
 
 ## What's next
 
-Please [send me](ryoheinaga@gmail.com) your feeback and let me know how you like it.
+Please send me your feeback at emitphp@gmail.com and let me know how you like it.
 If there are demands, I will work more.
 
 And if any of you wants to join the project, please let me know.
