@@ -24,7 +24,7 @@ https://getcomposer.org/doc/00-intro.md
 ```sh
 composer install
 ```
-Now you can run [Examples](https://nodejs.org/) 
+Now you can run [Examples](https://github.com/rnaga/EmitPHP/tree/master/examples) 
 
 ## Usages
 ### WebSocket
@@ -93,11 +93,11 @@ $server->on('request', function($req, $res){
 \Emit\Loop();
 ```
 
-See [examples](http://github.com) for more details.
+See [examples](https://github.com/rnaga/EmitPHP/tree/master/examples) for more details.
 
 ## What's next
 
-Please [send me](emitphp@gmail.com) your feeback and let me know how you like it.
+Please [send me](ryoheinaga@gmail.com) your feeback and let me know how you like it.
 If there are demands, I will work more.
 
 And if any of you wants to join the project, please let me know.
