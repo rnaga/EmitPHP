@@ -15,10 +15,7 @@ As of now, this is an experimental project and there still exists errors and bug
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 ```
-- Or follow instructions below
-```
-https://getcomposer.org/doc/00-intro.md
-```
+
 - Download [EmitPHP source code](https://github.com/rnaga/EmitPHP.git) from github
 - Run composer to create autoload
 ```sh
@@ -26,7 +23,7 @@ composer install
 ```
 Now you can run [Examples](https://github.com/rnaga/EmitPHP/tree/master/examples) 
 
-## Usages
+## Usage
 ### WebSocket
 Yes, EmitPHP supports WebSocket. 
 
