@@ -1,6 +1,6 @@
 {
-  "name": "EmitPHP",
-  "description": "Framework that you can create WebSocket, HTTP and FCGI Application in PHP",
+  "name": "rnaga/EmitPHP",
+  "description": "A PHP framework to develop WebSocket, HTTP and FCGI Applications",
   "license": "MIT",
   "keywords": ["websocket","http", "fcgi", "eventemitter"],
   "authors": [{
