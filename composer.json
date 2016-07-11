@@ -1,5 +1,5 @@
 {
-  "name": "rnaga/EmitPHP",
+  "name": "rnaga/emit-php",
   "description": "A PHP framework to develop WebSocket, HTTP and FCGI Applications",
   "license": "MIT",
   "keywords": ["websocket","http", "fcgi", "eventemitter"],
