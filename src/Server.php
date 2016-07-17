@@ -29,27 +29,43 @@ class Server extends ResourceEventEmitter
 
     final public function listen(...$args)
     {
+        if( !isset( $args[0] ) )
+        {
+            Console::error('Invalid Arguments');
+            return;
+        }
+
         if( is_string( $args[0] ) )
         {
-            $host = $args[0];
-
-            if( !isset( $args[1] ) || !is_int( $args[1] ) )
+            if( !isset( $args[1] ) )
+            {
+                Console::error('Invalid Arguments');
                 return;
+            }
 
+            $host = $args[0];
             $port = $args[1];
         }
         else
         {
-            if( !is_int( $args[0] ) )
-                return;
-
             $host = '0.0.0.0';
             $port = $args[0];
+        }
+
+        if( !is_int( $port ) || !is_string( $host ) )
+        {
+            throw new EmitException('Invalid Argument Types');
         }
 
         Console::debug("Server listening on host: $host port: $port");
 
         $resource = StreamSocket::createServerSocket( $host, $port );
+
+        if( !is_resource( $resource ) )
+        {
+            Console::error('Failed to create a new resource');
+            return;
+        }
 
         $this->on("read", function($server, $resource) {
 

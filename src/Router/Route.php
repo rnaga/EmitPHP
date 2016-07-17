@@ -3,6 +3,7 @@
 namespace Emit\Router;
 
 use Emit\Event\EventEmitter;
+use Emit\Console;
 
 class Route extends EventEmitter
 {
@@ -16,9 +17,9 @@ class Route extends EventEmitter
     }
 
     // Can be overridden
-    protected function isValidHandler()
+    protected function isValidHandler($handler)
     {
-        return true;
+        return $handler instanceof Route;
     }
 
     // Can be overridden
@@ -38,7 +39,10 @@ class Route extends EventEmitter
     public function use(...$args)
     {
         if(  0 >= count($args) )
+        {
+            Console::error("No Arguments");
             return false;
+        }
 
         $moreArgs = [];
 
@@ -53,10 +57,11 @@ class Route extends EventEmitter
             $handler = $args[1];
         }
 
-        if( !$handler instanceof Router &&
+        if( !$handler instanceof Route &&
             !$this->isValidHandler($handler) &&
             !is_callable( $handler ) )
         {
+            Console::error("Invalid Arguments");
             return false;
         }
 
@@ -67,6 +72,7 @@ class Route extends EventEmitter
 
         if( !$matcher instanceof Matcher )
         {
+            Console::error("Invalid Arguments. Route failed to create Matcher");
             return false;
         }
 

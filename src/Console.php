@@ -47,6 +47,7 @@ class Console
     public static function error($msg)
     {
         self::log($msg, self::LOG_ERROR);
+        throw new EmitException($msg);
     }
 
     public static function debug($msg)

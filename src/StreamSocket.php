@@ -19,7 +19,7 @@ class StreamSocket
     
     public static function createServerSocket( $host, $port )
     {
-        $fd = stream_socket_server("tcp://$host:$port", $errno, $errstr); 
+        $fd = @stream_socket_server("tcp://$host:$port", $errno, $errstr); 
         return $fd;
     }
 

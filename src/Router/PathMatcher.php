@@ -56,7 +56,10 @@ class PathMatcher implements Matcher
 
         // Only accepts string or array
         if( !is_string($params) && !is_array($params) )
+        {
+            Console::error("Invalid Arguments");
             return null;
+        }
 
         if( is_string($params) )
         {
@@ -65,8 +68,11 @@ class PathMatcher implements Matcher
         }
         else // array
         {
-            if( 2 < count($params) || !is_string($params[0]) )
+            if( 2 < count($params) || !isset( $params[0] ) || !is_string($params[0]) )
+            {
+                Console::error("Invalid Arguments");
                 return null;
+            }
 
             $path    = $params[0];
             $regexes = isset($params[1]) ? $params[1] : [];
